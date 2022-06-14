@@ -26,10 +26,10 @@ class ViewController: UIViewController {
         //nameLabel.text = storedName as? String
         
         if let myName = storedName as? String{
-            nameLabel.text = myName
+            nameLabel.text = "Name: \(myName)"
         }
         if let newBirthday = storedBirthday as? String {
-            birthdayLabel.text = newBirthday
+            birthdayLabel.text = "Birthday: \(newBirthday)"
         }
         
         
@@ -46,9 +46,25 @@ class ViewController: UIViewController {
        // nameLabel.text = nameTextField.text
        //birthdayLabel.text = birthdayTextField.text
         nameLabel.text = "Name :\(nameTextField.text!)"
-        birthdayLabel.text = "Birthday \(birthdayTextField.text!)"
+        birthdayLabel.text = "Birthday: \(birthdayTextField.text!)"
         
     }
     
+    @IBAction func deleteButtonClicked(_ sender: Any) {
+        
+        let storedName = UserDefaults.standard.object(forKey: "name")
+        let storedBirthday = UserDefaults.standard.object(forKey: "birthday")
+        
+        
+        
+        if let myName = storedName as? String{
+            UserDefaults.standard.removeObject(forKey: "name")
+            nameLabel.text = "Name:"
+        }
+        if let myBirthday = storedBirthday as? String{
+            UserDefaults.standard.removeObject(forKey: "birthday")
+            birthdayLabel.text = "Birthday:"
+        }
+    }
 }
 
